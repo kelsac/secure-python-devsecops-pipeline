@@ -24,6 +24,10 @@ RUN python -m pip install --no-cache-dir --upgrade \
 
 COPY app ./app
 
+# Remove the package installer from the production image.
+# Flask and Waitress are already installed.
+RUN python -m pip uninstall --yes pip
+
 USER appuser
 
 EXPOSE 8080
