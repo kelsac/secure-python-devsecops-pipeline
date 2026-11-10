@@ -1,0 +1,14 @@
+rules:
+  - id: python-no-shell-true
+    languages: [python]
+    severity: ERROR
+    message: Avoid shell=True; use an argument list and do not pass untrusted input to a shell.
+    patterns:
+      - pattern-either:
+          - pattern: subprocess.run(..., shell=True, ...)
+          - pattern: subprocess.Popen(..., shell=True, ...)
+  - id: python-no-eval
+    languages: [python]
+    severity: ERROR
+    message: Do not evaluate arbitrary expressions with eval().
+    pattern: eval(...)
