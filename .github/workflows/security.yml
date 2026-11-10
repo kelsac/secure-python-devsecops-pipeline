@@ -48,7 +48,7 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
-      - run: docker build -t secure-api:${{ github.sha }} .
+      - run: docker build --pull --no-cache -t secure-api:${{ github.sha }} .
       - uses: aquasecurity/trivy-action@v0.36.0
         with:
           scan-type: image
